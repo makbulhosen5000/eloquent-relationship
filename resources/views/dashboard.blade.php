@@ -1,9 +1,6 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-center font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Eloquent Relationship') }}
-        </h2>
-    </x-slot>
+
+@include('eloquent_relationship.header');
 
 <!doctype html>
 <html lang="en">
@@ -26,19 +23,21 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Phone</th>
                                 <th>Email</th>
                                 <th>Action</th>
                             </tr>
                             <tbody>
-                                <td>101</td>
-                                <td>AKaSH</td>
-                                <td>0145699622</td>
-                                <td>aka@gmail.com</td>
-                                <td>
-                                    <a href="" class="btn btn-primary"><i class="fa fa-user-edit"></a>
-                                    <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                </td>
+                                @foreach ($users as $key=> $data)
+                                <tr>
+                                    <td>{{$key+1}}</td>
+                                    <td>{{$data->student->student_name}}</td>
+                                    <td>{{$data->student->student_email}}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
+                                        <a href="#" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </thead>
                     </table>
