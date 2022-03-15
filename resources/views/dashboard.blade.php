@@ -104,6 +104,63 @@
                 </div>
             </div>
           </li>
+          <li><a href="#" class="btn btn-warning my-2">Has One Through</a>
+            <div class="container">
+                <div class="row">
+                     <div class="col-sm-12">
+                         <table class="table table-bordered text-center mb-0">
+                             <thead>
+                                 <tr>
+                                     <th>ID</th>
+                                     <th>Mechanic</th>
+                                     <th>Car Model</th>
+                                     <th>Car Owner</th>
+
+                                 </tr>
+                                 <tbody>
+                                     @foreach ($mechanics as $mechanic)
+                                     <tr>
+                                         <td>{{$mechanic->id}}</td>
+                                         <td>{{$mechanic->name}}</td>
+                                         <td>{{$mechanic->car->model}}</td>
+                                         <td>{{$mechanic->carOwner->name}}</td>
+                                     </tr>
+                                     @endforeach
+                                 </tbody>
+                             </thead>
+                         </table>
+                     </div>
+                </div>
+            </div>
+          </li>
+          <li><a href="#" class="btn btn-warning my-2">Has Many Through</a>
+            <div class="container">
+                <div class="row">
+                     <div class="col-sm-12">
+                         <table class="table table-bordered text-center mb-0">
+                             <thead>
+                                 <tr>
+                                     <th>ID</th>
+                                     <th>Country</th>
+                                     <th>Tutal Post</th>
+
+                                 </tr>
+                                 <tbody>
+                                     @foreach ($countries as $country)
+                                     <tr>
+                                         <td>{{$country->id}}</td>
+                                         <td>{{$country->name}}</td>
+                                         <td>{{$country->posts->count()}}</td>
+
+                                     </tr>
+                                     @endforeach
+                                 </tbody>
+                             </thead>
+                         </table>
+                     </div>
+                </div>
+            </div>
+          </li>
 
 
       </ul>

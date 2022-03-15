@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\Car;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Country;
+use App\Models\Mechanic;
 use App\Models\Phone;
 use App\Models\Post;
 use App\Models\Student;
@@ -32,12 +35,23 @@ Route::get('/dashboard', function () {
     $post = Comment::find(5)->post;
     //return $post;
 
-    $data['posts'] = Post::with('comments')->get();
+    $data['posts'] =
+
+
+     Post::with('comments')->get();
    // $comments = Comment::with('posts')->get();
     //return $posts;
     //$data['newPost'] =Post::with('categories')->get();
     $data['categories'] =Category::with('posts')->get();
    // return $MyPosts;
+
+   $data['mechanics'] = Mechanic::with('carOwner')->get();
+   //return $mechanics;
+   $countries = Mechanic::all();
+   $data['countries'] = Country::with('posts')->get();
+
+   //return $countries;
+
 
 
     return view('dashboard',$data);
